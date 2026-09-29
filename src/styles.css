@@ -98,3 +98,25 @@ h1 span:last-child{color:var(--navy)}
 .fs{min-height:24px;font-size:15px}.fs.ok{color:var(--blue);font-weight:600}.fs.err{color:#B3261E}
 .bar a:last-child{color:var(--blue)}.bar a{transition:color .2s}
 @media(min-width:768px){.hero{padding-inline:8vw}.register{padding-inline:8vw}}
+
+/* ===== v3: logos, awards, upcoming, international ===== */
+.logos{display:flex;align-items:center;gap:16px;animation:fade .8s both}
+.logos img{height:48px;width:auto;object-fit:contain}.logos .ph{height:48px;padding:0 14px}
+.logos .sep{width:1px;height:32px;background:var(--navy);opacity:.35}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding:0 20px 12px}
+.award{flex:none;width:min(70vw,280px);scroll-snap-align:start}.award figure{margin:0}
+.aph{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r);background:var(--sky)}
+.aph img,.aph .ph{width:100%;height:100%;object-fit:cover;transition:transform .5s}.award:hover .aph img{transform:scale(1.05)}
+.rank{position:absolute;left:0;top:0;background:var(--navy);color:#fff;font:700 22px var(--h);padding:8px 14px}
+.rank[data-r="1st"]{background:var(--blue)}
+.award figcaption{font:600 17px/1.3 var(--h);margin-top:10px;padding-top:10px;border-top:2px solid var(--navy)}
+.ugrid{display:grid;gap:20px}.ucard article{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;height:100%;transition:transform .25s,box-shadow .25s}
+.ucard article:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(10,37,64,.1)}
+.uph{aspect-ratio:16/9;overflow:hidden;background:var(--sky)}.uph img,.uph .ph{width:100%;height:100%;object-fit:cover;border-radius:0}
+.ub{padding:18px;display:grid;gap:6px}.ub time{color:var(--blue);font:600 13px var(--b);letter-spacing:.08em;text-transform:uppercase}
+.ub h3{font-size:clamp(28px,7vw,36px);color:var(--blue)}.ub p{color:var(--gray)}
+.intl{background:var(--sky)}.intl .reveal{display:grid;gap:10px;max-width:720px;margin-bottom:24px}
+.ih{display:flex;align-items:center;gap:14px;font-size:clamp(28px,7vw,48px)}
+.flag{width:44px;flex:none;border:1px solid var(--line);border-radius:2px}
+.intl time{color:var(--blue);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+@media(min-width:768px){.rail{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding:0}.award{width:auto}.ugrid{grid-template-columns:1fr 1fr}}

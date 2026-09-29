@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { NEXT_EVENT, CHAPTERS, EVENTS, OFFICERS, ABOUT_IEEE, ABOUT_SB, SOCIALS, EventItem, REGISTRATION_URL, CONTACT_EMAIL } from './data/content'
+import { NEXT_EVENT, CHAPTERS, EVENTS, OFFICERS, ABOUT_IEEE, ABOUT_SB, SOCIALS, EventItem, REGISTRATION_URL, CONTACT_EMAIL, AWARDS, UPCOMING, INTERNATIONAL } from './data/content'
 import { useCountdown } from './hooks/useCountdown'
 import { useInstall } from './hooks/useInstall'
 
@@ -56,6 +56,31 @@ function InstallCTA({ inst, compact }: { inst: ReturnType<typeof useInstall>; co
   return <button className={compact ? 'btn ghost' : 'btn'} onClick={inst.install}>{inst.isIOS ? 'Add to Home Screen' : 'Install IEEE EPI SB'}</button>
 }
 
+function PolandFlag() {
+  return <svg className="flag" viewBox="0 0 32 20" role="img" aria-label="Flag of Poland"><rect width="32" height="10" fill="#fff" /><rect y="10" width="32" height="10" fill="#DC143C" /></svg>
+}
+function Awards() {
+  return <section id="awards" className="awards"><Head kicker="2026" title="Our awards of 2026" />
+    <div className="rail">{AWARDS.map(w => <Reveal key={w.title} className="award"><figure>
+      <div className="aph"><Img src={w.photo} alt={w.title} fallback="Photo" width={280} height={350} /><span className="rank" data-r={w.rank}>{w.rank}</span></div>
+      <figcaption>{w.title}</figcaption></figure></Reveal>)}</div></section>
+}
+function Upcoming() {
+  return <section id="upcoming" className="upcoming"><Head kicker="Save the date" title="Upcoming national events" />
+    <div className="ugrid">{UPCOMING.map(u => <Reveal key={u.title} className="ucard"><article>
+      <div className="uph"><Img src={u.photo} alt={`${u.title} event`} fallback={u.title} width={640} height={360} /></div>
+      <div className="ub"><time>{u.date}</time><h3>{u.title}</h3><p>{u.description}</p></div></article></Reveal>)}</div></section>
+}
+function International() {
+  const [open, setOpen] = useState<number | null>(null)
+  return <section id="international" className="intl"><Reveal>
+    <span className="kicker">Beyond borders</span>
+    <h2 className="ih"><PolandFlag />{INTERNATIONAL.heading}</h2>
+    <h3>{INTERNATIONAL.title}</h3><time>{INTERNATIONAL.date}</time><p className="lead">{INTERNATIONAL.description}</p></Reveal>
+    <div className="strip">{INTERNATIONAL.photos.map((p, i) => <button key={p} onClick={() => setOpen(i)} aria-label={`Open photo ${i + 1} from Kraków`}>
+      <Img src={p} alt={`R8 SYP Kraków photo ${i + 1}`} fallback="Photo" width={240} height={180} /></button>)}</div>
+    {open !== null && <Lightbox photos={INTERNATIONAL.photos} index={open} onClose={() => setOpen(null)} />}</section>
+}
 const NAV = [['home','Home'],['about','Explore'],['chapters','Chapters'],['events','Events'],['team','Team'],['register','Join']]
 function ScrollBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -106,7 +131,7 @@ export default function App() {
     <ScrollBar />
     <main>
       <section id="home" className="hero">
-        <Img src="/images/branding/ieee-logo.png" alt="IEEE" fallback="IEEE" className="logo" width={120} height={48} loading="eager" />
+        <div className="logos"><Img src="/images/branding/ieee-logo.png" alt="IEEE" fallback="IEEE" width={120} height={48} loading="eager" /><span className="sep" aria-hidden /><Img src="/images/branding/epi-sb-logo.png" alt="IEEE EPI Student Branch" fallback="EPI SB" width={120} height={48} loading="eager" /></div>
         <svg className="circuit" viewBox="0 0 400 700" preserveAspectRatio="xMaxYMid slice" aria-hidden fill="none">
           <path d="M400 80H300l-40 40v120h-80l-30 30v90H60" /><path d="M400 300H340l-30 30v150h-90l-40 40v100" /><path d="M400 560H280l-30-30" />
           <circle cx="60" cy="360" r="5" /><circle cx="180" cy="570" r="5" /><circle cx="250" cy="530" r="5" /></svg>
@@ -125,7 +150,10 @@ export default function App() {
         <div className="chapters">{CHAPTERS.map(c => <Reveal key={c.id}><article className="chapter">
           <Img src={c.logo} alt={`${c.name} chapter logo`} fallback={c.name} width={72} height={72} />
           <div><h3>{c.name}</h3><small>{c.full}</small><p>{c.description}</p><p className="mission"><b>Mission:</b> {c.mission}</p></div></article></Reveal>)}</div></section>
+      <Upcoming />
       <section id="events"><Head kicker="04" title="Our events" />{EVENTS.map(e => <Reveal key={e.id}><EventCard e={e} /></Reveal>)}</section>
+      <Awards />
+      <International />
       <section id="team"><Head kicker="05" title="Meet the officers" />
         <div className="officers">{OFFICERS.map(o => <Reveal key={o.role}><article className="officer">
           <Img src={o.photo} alt={`${o.name}, ${o.role}`} fallback={o.role[0]} width={300} height={375} />
