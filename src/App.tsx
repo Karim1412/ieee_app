@@ -191,9 +191,9 @@ export default function App() {
       </section>
       <Marquee />
       <Register />
-      <section id="about"><Reveal><div className="aboutlogo"><Img src="/images/branding/ieee-logo.png" alt="IEEE logo" fallback="IEEE" width={160} height={56} /></div><Head kicker="01" title={ABOUT_IEEE.title} /><p className="lead">{ABOUT_IEEE.text}</p>
+      <section id="about"><Reveal><Head kicker="01" title={ABOUT_IEEE.title} /><p className="lead">{ABOUT_IEEE.text}</p>
         <ul className="pts">{ABOUT_IEEE.points.map(p => <li key={p}>{p}</li>)}</ul></Reveal>
-        <Reveal className="alt"><div className="aboutlogo"><Img src="/images/branding/epi-sb-logo.png" alt="IEEE EPI Student Branch logo" fallback="EPI SB" width={160} height={56} /></div><Head kicker="02" title={ABOUT_SB.title} /><p className="lead">{ABOUT_SB.text}</p></Reveal></section>
+        <Reveal className="alt"><Head kicker="02" title={ABOUT_SB.title} /><p className="lead">{ABOUT_SB.text}</p></Reveal></section>
       <Chapters />
       <Upcoming />
       <section id="events"><Head kicker="04" title="Our events" />{EVENTS.map(e => <Reveal key={e.id}><EventCard e={e} /></Reveal>)}</section>
