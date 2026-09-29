@@ -99,6 +99,16 @@ function NotifyCTA({ inst }: { inst: ReturnType<typeof useInstall> }) {
   if (perm !== 'default') return null
   return <button className="btn" onClick={async () => { await enablePush(); setPerm(Notification.permission) }}>Enable notifications</button>
 }
+const NKEY = 'ieee-notify-dismissed', NCOOLDOWN = 1000 * 60 * 60 * 24 * 7
+function NotifyPopup({ onClose }: { onClose: () => void }) {
+  const ref = useRef<HTMLDialogElement>(null); useEffect(() => { ref.current?.showModal() }, [])
+  return <dialog ref={ref} className="pop" onClose={onClose} aria-labelledby="np-t">
+    <Img src="/images/branding/epi-sb-logo.png" alt="IEEE EPI SB" fallback="EPI SB" width={72} height={72} loading="eager" />
+    <h3 id="np-t">Stay in the loop</h3>
+    <p>Get notified about IEEE Day, new events and registrations.</p>
+    <button className="btn" onClick={() => { ref.current?.close(); enablePush() }}>Enable notifications</button>
+    <button className="btn ghost" onClick={() => ref.current?.close()}>Not now</button></dialog>
+}
 const NAV = [['home','Home'],['about','Explore'],['chapters','Chapters'],['events','Events'],['team','Team'],['register','Join']]
 function ScrollBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -141,8 +151,13 @@ function Contact() {
 }
 
 export default function App() {
-  const inst = useInstall(); const [active, setActive] = useState('home'); const [popup, setPopup] = useState(false)
+  const inst = useInstall(); const [active, setActive] = useState('home'); const [popup, setPopup] = useState(false); const [npopup, setNpopup] = useState(false)
   useEffect(() => { const t = setTimeout(() => inst.autoSuggest && setPopup(true), 1800); return () => clearTimeout(t) }, [inst.autoSuggest])
+  useEffect(() => {
+    if (!inst.installed || typeof Notification === 'undefined' || Notification.permission !== 'default') return
+    try { if (Date.now() - Number(localStorage.getItem(NKEY) || 0) < NCOOLDOWN) return } catch {}
+    const t = setTimeout(() => setNpopup(true), 2000); return () => clearTimeout(t)
+  }, [inst.installed])
   useEffect(() => { const o = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && setActive(e.target.id)), { rootMargin: '-45% 0px -50% 0px' })
     NAV.forEach(([id]) => { const el = document.getElementById(id); el && o.observe(el) }); return () => o.disconnect() }, [])
   return <>
@@ -183,6 +198,7 @@ export default function App() {
     <nav className="bar" aria-label="Main">{NAV.map(([id, l]) =>
       <a key={id} href={`#${id}`} aria-current={active === id ? 'page' : undefined}>{l}</a>)}</nav>
     {popup && !inst.installed && <InstallPopup inst={inst} onClose={() => { setPopup(false); inst.dismiss() }} />}
+    {npopup && <NotifyPopup onClose={() => { setNpopup(false); try { localStorage.setItem(NKEY, String(Date.now())) } catch {} }} />}
     {inst.showIOS && <IOSGuide onClose={inst.closeIOS} />}
   </>
 }
