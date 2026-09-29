@@ -104,13 +104,13 @@ export const AWARDS: Award[] = [
 export interface Upcoming { title: string; date: string; description: string; photo: string }
 export const UPCOMING: Upcoming[] = [
   { title: 'TSYP 14', date: 'TODO: date', photo: '/images/upcoming/tsyp.jpg',
-    description: 'A national congress for IEEE students and young professionals, with technical and non-technical challenges, talks and workshops, welcoming 500+ students from across the country.' },
+    description: 'A national congress for IEEE students and young professionals, with technical and non-technical challenges, talks and workshops, welcoming 1200+ students from across the country.' },
   { title: 'TRSYP 2.0', date: 'TODO: date', photo: '/images/upcoming/trsyp.jpg',
-    description: 'A national student congress bringing together IEEE members for competitions, technical sessions and networking, with challenges for every profile.' },
+    description: 'A national student congress bringing together IEEE members for robotic competitions, technical sessions and networking, with challenges for every profile.' },
   { title: 'WIE ACT 5.0', date: 'TODO: date', photo: '/images/upcoming/wie-act.jpg',
     description: 'A national gathering led by IEEE Women in Engineering: inspiring speakers, hands-on technical challenges and non-technical activities open to hundreds of students.' },
   { title: 'CSTAM 3.0', date: 'TODO: date', photo: '/images/upcoming/cstam.jpg',
-    description: 'The new edition of the CSTAM technical challenge, a national event where student teams compete and connect with the IEEE community.' },
+    description: 'The new edition of the CSTAM congress, a national event where student teams compete in computer society fields and connect with the IEEE community.' },
 ]
 
 // ---------- INTERNATIONAL ----------
