@@ -86,6 +86,8 @@ export const OFFICERS: Officer[] = [
   { role: 'Webmaster', name: 'Radhi Tlili', photo: '/images/officers/webmaster.jpg' },
   { role: 'Media Manager', name: 'Ela ben Yahya', photo: '/images/officers/media-manager.jpg' },
   { role: 'Social Media Manager', name: 'Zaineb Rahall', photo: '/images/officers/social-media-manager.jpg' },
+  { role: 'Counselor', name: 'Rached Alaya', photo: '/images/officers/counselor.jpeg' },
+
 ]
 
 // ---------- AWARDS 2026 ----------
