@@ -26,7 +26,7 @@ export const ABOUT_IEEE = {
 }
 export const ABOUT_SB = {
   title: 'What is IEEE EPI SB?',
-  text: 'Example: IEEE EPI SB is the IEEE Student Branch of EPI Digital School. We bring students together around technology, innovation and leadership through workshops, competitions and community events.', // TODO: your real text
+  text: 'IEEE EPI SB is the IEEE Student Branch of EPI Digital School. We bring students together around technology, innovation and leadership through workshops, competitions and community events.', // TODO: your real text
 }
 
 // ---------- CHAPTERS ----------
@@ -34,24 +34,24 @@ export interface Chapter { id: string; name: string; full: string; logo: string;
 export const CHAPTERS: Chapter[] = [
   { id: 'ras', name: 'RAS', full: 'Robotics and Automation Society',
     logo: '/images/chapters/ras.png',
-    description: 'Example: explores robots, automation and embedded systems.',
-    mission: 'Example: help students build and program real robotic systems.' },
+    description: 'explores robots, automation and embedded systems.',
+    mission: 'help students build and program real robotic systems.' },
   { id: 'cs', name: 'CS', full: 'Computer Society',
     logo: '/images/chapters/cs.png',
-    description: 'Example: software, algorithms and computing technologies.',
-    mission: 'Example: grow coding and problem-solving skills.' },
+    description: 'software, algorithms and computing technologies.',
+    mission: 'grow coding and problem-solving skills.' },
   { id: 'cis', name: 'CIS', full: 'Computational Intelligence Society',
     logo: '/images/chapters/cis.png',
-    description: 'Example: AI, machine learning and data science.',
-    mission: 'Example: make AI accessible through hands-on projects.' },
+    description: 'AI, machine learning and data science.',
+    mission: 'make AI accessible through hands-on projects.' },
   { id: 'ias', name: 'IAS', full: 'Industry Applications Society',
     logo: '/images/chapters/ias.png',
-    description: 'Example: industrial technology, energy and applied engineering.',
-    mission: 'Example: connect students with real industry practice.' },
+    description: 'industrial technology, energy and applied engineering.',
+    mission: 'connect students with real industry practice.' },
   { id: 'wie', name: 'WIE', full: 'Women in Engineering',
     logo: '/images/chapters/wie.png',
-    description: 'Example: supports and inspires women in engineering and technology.',
-    mission: 'Example: build an inclusive community of future engineers.' },
+    description: 'supports and inspires women in engineering and technology.',
+    mission: 'build an inclusive community of future engineers.' },
 ]
 
 // ---------- EVENTS ----------
@@ -59,19 +59,19 @@ export const CHAPTERS: Chapter[] = [
 export interface EventItem { id: string; name: string; date: string; description: string; photos: string[] }
 export const EVENTS: EventItem[] = [
   { id: 'ieee-day', name: 'IEEE Day', date: '15 October 2026',
-    description: 'Example: the yearly celebration of IEEE and the ways engineers and technology improve the world, with activities for our members.', // TODO
+    description: 'the yearly celebration of IEEE and the ways engineers and technology improve the world, with activities for our members.', // TODO
     photos: ['/images/events/ieee-day.jpg', '/images/events/ieee-day1.jpg', '/images/events/ieee-day2.jpg'] },
-  { id: 'ieee-xtreme', name: 'IEEE Xtreme', date: 'Example: October 2025',
-    description: 'Example: a 24-hour global programming competition where student teams solve algorithmic problems.',
-    photos: ['/images/events/ieee-xtreme.jpg', '/images/events/ieee-xtreme1.jpg'] },
-  { id: 'robostation', name: 'Robostation', date: 'Example: Coming Soon 2026',
-    description: 'Example: a robotics event with workshops, challenges and live demos.',
+  { id: 'ieee-xtreme', name: 'IEEE Xtreme', date: '31 October 2026',
+    description: 'a 24-hour global programming competition where student teams solve algorithmic problems.',
+    photos: ['/images/events/ieee-xtreme1.jpg', '/images/events/ieee-xtreme2.jpg'] },
+  { id: 'robostation', name: 'Robostation', date: 'Coming Soon',
+    description: 'a robotics event with workshops, challenges and live demos.',
     photos: ['/images/events/robostation.jpg', '/images/events/robostation1.jpg'] },
-  { id: 'mystery-night', name: 'Mystery Night', date: 'Example: December 2025',
-    description: 'Example: a night of puzzles, clues and teamwork where teams race to solve the mystery.',
+  { id: 'mystery-night', name: 'Mystery Night', date: 'Coming Soon',
+    description: 'a night of puzzles, clues and teamwork where teams race to solve the mystery.',
     photos: ['/images/events/mystery-night.jpg', '/images/events/mystery-night1.jpg'] },
-  { id: 'hackarena', name: 'Hackarena', date: 'Example: May 2026',
-    description: 'Example: a hackathon where teams build a working project in a limited time.',
+  { id: 'hackarena', name: 'Hackarena', date: 'Coming Soon',
+    description: 'a hackathon where teams build a working project in a limited time.',
     photos: ['/images/events/hackarena.jpg', '/images/events/hackarena1.jpg'] },
 ]
 
@@ -79,20 +79,20 @@ export const EVENTS: EventItem[] = [
 // bio and link are optional. Use the real extension of each photo.
 export interface Officer { role: string; name: string; photo: string; bio?: string; link?: string }
 export const OFFICERS: Officer[] = [
-  { role: 'Chair', name: 'Full Name', photo: '/images/officers/chair.jpg' },
-  { role: 'Vice Chair', name: 'Full Name', photo: '/images/officers/vice-chair.jpg' },
-  { role: 'Secretary', name: 'Full Name', photo: '/images/officers/secretary.jpg' },
-  { role: 'Treasurer', name: 'Full Name', photo: '/images/officers/treasurer.jpg' },
-  { role: 'Webmaster', name: 'Full Name', photo: '/images/officers/webmaster.jpg' },
-  { role: 'Media Manager', name: 'Full Name', photo: '/images/officers/media-manager.jpg' },
-  { role: 'Social Media Manager', name: 'Full Name', photo: '/images/officers/social-media-manager.jpg' },
+  { role: 'Chair', name: 'Karim Thabet', photo: '/images/officers/chair.jpg' },
+  { role: 'Vice Chair', name: 'Dhia Zrelli', photo: '/images/officers/vice-chair.jpg' },
+  { role: 'Secretary', name: 'Sarah Farjallah', photo: '/images/officers/secretary.jpg' },
+  { role: 'Treasurer', name: 'Rima Jaballah', photo: '/images/officers/treasurer.jpg' },
+  { role: 'Webmaster', name: 'Radhi Tlili', photo: '/images/officers/webmaster.jpg' },
+  { role: 'Media Manager', name: 'Ela ben Yahya', photo: '/images/officers/media-manager.jpg' },
+  { role: 'Social Media Manager', name: 'Zaineb Rahall', photo: '/images/officers/social-media-manager.jpg' },
 ]
 
 // ---------- AWARDS 2026 ----------
 // Photos: /public/images/awards/. Use the real file extension.
 export interface Award { rank: '1st' | '2nd' | '3rd'; title: string; photo: string }
 export const AWARDS: Award[] = [
-  { rank: '1st', title: '1st prize in CSTAM 2.0 technical challenge', photo: '/images/awards/cstam-2.jpg' },
+  { rank: '1st', title: '1st prize in CSTAM 2.0 technical challenge', photo: '/images/awards/cstam.jpg' },
   { rank: '1st', title: '1st prize in Sumo Squid Robots 6.0', photo: '/images/awards/sumo.jpg' },
   { rank: '2nd', title: '2nd prize All Terrain Squid Robots 6.0', photo: '/images/awards/all-terrain-squid-6.jpg' },
   { rank: '2nd', title: '2nd prize All Terrain in Green Robot Challenge ITBS', photo: '/images/awards/itbs.jpg' },
