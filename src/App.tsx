@@ -90,22 +90,6 @@ function InstallPopup({ inst, onClose }: { inst: ReturnType<typeof useInstall>; 
     <button className="btn" onClick={() => { ref.current?.close(); inst.install() }}>{inst.isIOS ? 'Show me how' : 'Install the app'}</button>
     <button className="btn ghost" onClick={() => ref.current?.close()}>Not now</button></dialog>
 }
-function Events() {
-  const [lb, setLb] = useState<{ e: EventItem; i: number } | null>(null)
-  return <section id="events" className="events">
-    <Head kicker="Our story" title="Our events" />
-    <p className="lead sub">Five signature events where our community learns, competes and celebrates technology together.</p>
-    <div className="evlist">{EVENTS.map((e, n) => <Reveal key={e.id} className="ev"><article>
-      <button className="cover" disabled={!e.photos.length} onClick={() => setLb({ e, i: 0 })} aria-label={`Open ${e.name} gallery`}>
-        {e.photos[0] ? <Img src={e.photos[0]} alt={e.name} fallback={e.name} width={640} height={400} /> : <div className="ph">Add photos</div>}
-        <span className="idx">{String(n + 1).padStart(2, '0')}</span></button>
-      <div className="evb"><time>{e.date}</time><h3>{e.name}</h3><p>{e.description}</p>
-        {e.photos.length > 0 && <button className="btn ghost light" onClick={() => setLb({ e, i: 0 })}>View gallery · {e.photos.length} photos</button>}
-        {e.photos.length > 1 && <div className="thumbs">{e.photos.slice(1, 5).map((p, i) =>
-          <button key={p} onClick={() => setLb({ e, i: i + 1 })} aria-label={`Open ${e.name} photo ${i + 2}`}><Img src={p} alt="" fallback="" width={72} height={56} /></button>)}</div>}
-      </div></article></Reveal>)}</div>
-    {lb && <Lightbox photos={lb.e.photos} index={lb.i} onClose={() => setLb(null)} />}</section>
-}
 const NAV = [['home','Home'],['about','Explore'],['chapters','Chapters'],['events','Events'],['team','Team'],['register','Join']]
 function ScrollBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -175,8 +159,8 @@ export default function App() {
         <div className="chapters">{CHAPTERS.map(c => <Reveal key={c.id}><article className="chapter">
           <Img src={c.logo} alt={`${c.name} chapter logo`} fallback={c.name} width={72} height={72} />
           <div><h3>{c.name}</h3><small>{c.full}</small><p>{c.description}</p><p className="mission"><b>Mission:</b> {c.mission}</p></div></article></Reveal>)}</div></section>
-      <Events />
       <Upcoming />
+      <section id="events"><Head kicker="04" title="Our events" />{EVENTS.map(e => <Reveal key={e.id}><EventCard e={e} /></Reveal>)}</section>
       <Awards />
       <International />
       <section id="team"><Head kicker="05" title="Meet the officers" />
