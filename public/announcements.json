@@ -3,13 +3,7 @@
     "id": "welcome",
     "date": "2026-09-29",
     "title": "Welcome to IEEE EPI SB",
-    "body": "You're all set. Messages from IEEE EPI SB will appear here, so you can read them again anytime.\n\nExample message: replace it with your own."
-  },
-  {
-    "id": "ieee-day",
-    "date": "2026-09-30",
-    "title": "IEEE Day: 15 October 2026",
-    "body": "Mark your calendar: IEEE Day is on 15 October 2026.\n\nMore details soon.",
-    "link": { "label": "Register now", "url": "https://docs.google.com/forms/d/e/1FAIpQLSd4MA0sYbJRtfGLxbXNgcKEBUZd17E7g3vCWciq0Irm22nj1w/viewform?usp=dialog" }
+    "body": "Welcome to the place where you push beyond your limits, where you may fall, rise, and come back stronger.\n\nThe place where you grow, learn, and become more professional.\n\nThe place where you discover a different side of life, challenge yourself, and create unforgettable memories.\n\nThe place where you meet real friends, inspiring colleagues, and future leaders.\n\nWelcome to the place where your journey truly begins.\n\n**Welcome to IEEE EPI SB. 💙⚡**",
+    "image": "/images/news/welcome.jpeg"
   }
 ]
