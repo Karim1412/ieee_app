@@ -60,19 +60,19 @@ export interface EventItem { id: string; name: string; date: string; description
 export const EVENTS: EventItem[] = [
   { id: 'ieee-day', name: 'IEEE Day', date: '15 October 2026',
     description: 'the yearly celebration of IEEE and the ways engineers and technology improve the world, with activities for our members.', // TODO
-    photos: ['/images/events/ieee-day.jpg', '/images/events/ieee-day/2.jpg', '/images/events/ieee-day/3.jpg'] },
+    photos: ['/images/events/ieee-day.jpg', '/images/events/ieee-day1.jpg', '/images/events/ieee-day2.jpg'] },
   { id: 'ieee-xtreme', name: 'IEEE Xtreme', date: '31 October 2026',
     description: 'a 24-hour global programming competition where student teams solve algorithmic problems.',
-    photos: ['/images/events/ieee-xtreme.jpg', '/images/events/ieee-xtreme/2.jpg'] },
+    photos: ['/images/events/ieee-xtreme.jpg', '/images/events/ieee-xtreme1.jpg'] },
   { id: 'robostation', name: 'Robostation 2.0', date: 'March 2026',
     description: 'a robotics event with workshops, challenges and live demos.',
-    photos: ['/images/events/robostation.jpg', '/images/events/robostation/2.jpg'] },
+    photos: ['/images/events/robostation.jpg', '/images/events/robostation1.jpg'] },
   { id: 'mystery-night', name: 'Mystery Night 4.0', date: 'Coming Soon',
     description: 'a night of puzzles, clues and teamwork where teams race to solve the mystery.',
-    photos: ['/images/events/mystery-night.jpg', '/images/events/mystery-night/2.jpg'] },
+    photos: ['/images/events/mystery-night.jpg', '/images/events/mystery-night1.jpg'] },
   { id: 'hackarena', name: 'Hackarena 3.0', date: 'Coming Soon',
     description: 'a hackathon where teams build a working project in a limited time.',
-    photos: ['/images/events/hackarena.jpg', '/images/events/hackarena/2.jpg'] },
+    photos: ['/images/events/hackarena.jpg', '/images/events/hackarena1.jpg'] },
 ]
 
 // ---------- OFFICERS ----------
