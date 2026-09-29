@@ -3,6 +3,7 @@ import { NEXT_EVENT, CHAPTERS, EVENTS, OFFICERS, ABOUT_IEEE, ABOUT_SB, SOCIALS, 
 import { useCountdown } from './hooks/useCountdown'
 import { useInstall } from './hooks/useInstall'
 import { enablePush } from './push'
+import Inbox from './Inbox'
 
 function Img({ src, alt, fallback, ...p }: { src: string; alt: string; fallback: string } & React.ImgHTMLAttributes<HTMLImageElement>) {
   const [bad, setBad] = useState(false)
@@ -162,6 +163,7 @@ export default function App() {
     NAV.forEach(([id]) => { const el = document.getElementById(id); el && o.observe(el) }); return () => o.disconnect() }, [])
   return <>
     <ScrollBar />
+    <Inbox />
     <main>
       <section id="home" className="hero">
         <div className="logos"><Img src="/images/branding/ieee-logo.png" alt="IEEE" fallback="IEEE" width={120} height={48} loading="eager" /><span className="sep" aria-hidden /><Img src="/images/branding/epi-sb-logo.png" alt="IEEE EPI Student Branch" fallback="EPI SB" width={120} height={48} loading="eager" /></div>

@@ -19,6 +19,10 @@ export default defineConfig({
       importScripts: ['https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js'],
       globPatterns: ['**/*.{js,css,html,svg,png,webp,avif}'],
       runtimeCaching: [{
+        urlPattern: ({ url }) => url.pathname === '/announcements.json',
+        handler: 'NetworkFirst',
+        options: { cacheName: 'announcements', networkTimeoutSeconds: 3 }
+      }, {
         urlPattern: ({ request }) => request.destination === 'image',
         handler: 'CacheFirst',
         options: { cacheName: 'images', expiration: { maxEntries: 150, maxAgeSeconds: 60*60*24*60 } }

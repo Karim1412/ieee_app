@@ -62,16 +62,16 @@ export const EVENTS: EventItem[] = [
     description: 'the yearly celebration of IEEE and the ways engineers and technology improve the world, with activities for our members.', // TODO
     photos: ['/images/events/ieee-day.jpg', '/images/events/ieee-day1.jpg', '/images/events/ieee-day2.jpg'] },
   { id: 'ieee-xtreme', name: 'IEEE Xtreme 20.0', date: '31 October 2026',
-    description: 'a 24-hour global programming competition where student teams solve algorithmic problems.',
+    description: 'a 24-hour global competitive programming competition where student teams solve algorithmic problems.',
     photos: ['/images/events/ieee-xtreme1.jpg', '/images/events/ieee-xtreme2.jpg'] },
   { id: 'robostation', name: 'Robostation 2.0', date: 'Coming Soon',
-    description: 'a robotics event with workshops, challenges and live demos.',
+    description: 'Our national Robotic competition where students design, build and program robots to complete in line follower,all terrain , sumo and rocket league',
     photos: ['/images/events/robostation.jpg', '/images/events/robostation1.jpg'] },
   { id: 'mystery-night', name: 'Mystery Night 4.0', date: 'Coming Soon',
     description: 'a night of puzzles, clues and teamwork where teams race to solve the mystery.',
     photos: ['/images/events/mystery-night.jpg', '/images/events/mystery-night1.jpg'] },
-  { id: 'hackarena', name: 'Hackarena', date: 'Coming Soon',
-    description: 'a hackathon where teams build a working project in a limited time.',
+  { id: 'hackarena', name: 'Hackarena 3.0', date: 'Coming Soon',
+    description: 'An intensive CTF where teams face multiple cybersecurity challenges, from multiple categories, to test their skills and knowledge in a competitive environment.',
     photos: ['/images/events/hackarena.jpg', '/images/events/hackarena1.jpg'] },
 ]
 

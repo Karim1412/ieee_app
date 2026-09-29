@@ -125,3 +125,21 @@ h1 span:last-child{color:var(--navy)}
 .pop{margin:auto;width:min(92vw,400px);border-radius:10px;text-align:center;animation:up .45s cubic-bezier(.2,.8,.2,1)}
 .pop[open]{display:grid;gap:12px;justify-items:center}.pop img,.pop .ph{width:72px;height:72px;object-fit:contain}
 .pop h3{font-size:26px;color:var(--blue)}.pop p{color:var(--gray)}.pop .btn{width:100%}
+
+/* ===== inbox ===== */
+.bell{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:30;width:44px;height:44px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);border-radius:50%;color:var(--blue);cursor:pointer;box-shadow:0 2px 10px rgba(10,37,64,.1);transition:transform .15s}
+.bell:active{transform:scale(.94)}.bell svg{width:22px;height:22px}
+.bell b{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--navy);color:#fff;font:700 12px/20px var(--b);text-align:center;animation:pop .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{transform:scale(0)}}
+.inbox{margin:0 0 0 auto;width:min(100vw,440px);max-width:100vw;height:100dvh;max-height:100dvh;padding:0;border-radius:0}
+.inbox[open]{display:flex;flex-direction:column;animation:slideIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes slideIn{from{transform:translateX(30px);opacity:0}}
+.inbox header{display:flex;align-items:center;gap:8px;padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--line)}
+.inbox header h2{flex:1;font-size:20px}.inbox header button{min-height:44px;min-width:44px;background:none;border:0;color:var(--blue);font:600 15px var(--b);cursor:pointer}
+.inbox .body{overflow-y:auto;padding:8px 16px calc(24px + env(safe-area-inset-bottom,0px))}
+.inbox ul{list-style:none;padding:0}
+.inbox li button{display:grid;gap:2px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 0 14px 18px;position:relative;cursor:pointer;font:inherit;color:inherit}
+.inbox li strong{font:600 16px var(--h)}.inbox li small{color:var(--blue);font-size:12px;letter-spacing:.06em;text-transform:uppercase}.inbox li span{color:var(--gray);font-size:14px}
+.inbox li button.unread::before{content:'';position:absolute;left:0;top:21px;width:9px;height:9px;border-radius:50%;background:var(--blue)}
+.msg{display:grid;gap:12px;padding-top:12px;justify-items:start}.msg img{width:100%;border-radius:var(--r);aspect-ratio:16/9;object-fit:cover}
+.msg time{color:var(--blue);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase}.msg h3{font-size:26px}
