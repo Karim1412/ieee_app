@@ -16,6 +16,7 @@ export default defineConfig({
         { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }]
     },
     workbox: {
+      importScripts: ['https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js'],
       globPatterns: ['**/*.{js,css,html,svg,png,webp,avif}'],
       runtimeCaching: [{
         urlPattern: ({ request }) => request.destination === 'image',

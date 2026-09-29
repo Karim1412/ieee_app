@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NEXT_EVENT, CHAPTERS, EVENTS, OFFICERS, ABOUT_IEEE, ABOUT_SB, SOCIALS, EventItem, REGISTRATION_URL, CONTACT_EMAIL, AWARDS, UPCOMING, INTERNATIONAL } from './data/content'
 import { useCountdown } from './hooks/useCountdown'
 import { useInstall } from './hooks/useInstall'
+import { enablePush } from './push'
 
 function Img({ src, alt, fallback, ...p }: { src: string; alt: string; fallback: string } & React.ImgHTMLAttributes<HTMLImageElement>) {
   const [bad, setBad] = useState(false)
@@ -90,6 +91,14 @@ function InstallPopup({ inst, onClose }: { inst: ReturnType<typeof useInstall>; 
     <button className="btn" onClick={() => { ref.current?.close(); inst.install() }}>{inst.isIOS ? 'Show me how' : 'Install the app'}</button>
     <button className="btn ghost" onClick={() => ref.current?.close()}>Not now</button></dialog>
 }
+function NotifyCTA({ inst }: { inst: ReturnType<typeof useInstall> }) {
+  const has = typeof Notification !== 'undefined'
+  const [perm, setPerm] = useState(has ? Notification.permission : 'denied')
+  if (!inst.installed || !has) return null
+  if (perm === 'granted') return <p className="ok">✓ Notifications are on.</p>
+  if (perm !== 'default') return null
+  return <button className="btn" onClick={async () => { await enablePush(); setPerm(Notification.permission) }}>Enable notifications</button>
+}
 const NAV = [['home','Home'],['about','Explore'],['chapters','Chapters'],['events','Events'],['team','Team'],['register','Join']]
 function ScrollBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -168,7 +177,7 @@ export default function App() {
           <Img src={o.photo} alt={`${o.name}, ${o.role}`} fallback={o.role[0]} width={300} height={375} />
           <h3>{o.name}</h3><p>{o.role}</p>{o.bio && <small>{o.bio}</small>}</article></Reveal>)}</div></section>
       <Contact />
-      <section className="install"><h2>Keep IEEE EPI SB in your pocket</h2><p>Install the app for instant access, even offline.</p><InstallCTA inst={inst} /></section>
+      <section className="install"><h2>Keep IEEE EPI SB in your pocket</h2><p>Install the app for instant access, even offline.</p><InstallCTA inst={inst} /><NotifyCTA inst={inst} /></section>
       <footer><p>© IEEE EPI Student Branch</p><div>{SOCIALS.map(s => <a key={s.label} href={s.url} rel="noopener">{s.label}</a>)}</div></footer>
     </main>
     <nav className="bar" aria-label="Main">{NAV.map(([id, l]) =>

@@ -122,3 +122,8 @@ export const INTERNATIONAL = {
   description: 'In July 2026, our Chair and Vice Chair earned fully funded grants to attend the IEEE Region 8 Student and Young Professionals (R8 SYP) Congress in Kraków, Poland. They represented IEEE EPI SB and Tunisia, shared our branch’s experience with IEEE volunteers from across the region, and came back with new ideas, connections and practices to strengthen our chapters and events.',
   photos: ['/images/international/1.jpg', '/images/international/2.jpg', '/images/international/3.jpg'],
 }
+
+
+// ---------- PUSH NOTIFICATIONS (OneSignal) ----------
+// Paste your OneSignal App ID here (public, safe in frontend code)
+export const ONESIGNAL_APP_ID = '2d081d69-251f-4f0d-898c-0ebc1a3a583d'
