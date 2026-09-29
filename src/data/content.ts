@@ -97,6 +97,7 @@ export const AWARDS: Award[] = [
   { rank: '2nd', title: '2nd prize All Terrain Squid Robots 6.0', photo: '/images/awards/all-terrain-squid-6.jpg' },
   { rank: '2nd', title: '2nd prize All Terrain in Green Robot Challenge ITBS', photo: '/images/awards/itbs.jpg' },
   { rank: '3rd', title: '3rd prize All Terrain in FSM Robots', photo: '/images/awards/fsm.jpg' },
+  { rank: '3rd', title: '3rd prize All Terrain Squid Robots 6.0', photo: '/images/awards/mayara.jpg' },
 ]
 
 // ---------- UPCOMING NATIONAL EVENTS ----------

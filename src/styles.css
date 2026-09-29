@@ -119,7 +119,7 @@ h1 span:last-child{color:var(--navy)}
 .ih{display:flex;align-items:center;gap:14px;font-size:clamp(28px,7vw,48px)}
 .flag{width:44px;flex:none;border:1px solid var(--line);border-radius:2px}
 .intl time{color:var(--blue);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
-@media(min-width:768px){.rail{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding:0}.award{width:auto}.ugrid{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){.rail{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0}.award{width:auto}.ugrid{grid-template-columns:1fr 1fr}}
 
 /* ===== install popup ===== */
 .pop{margin:auto;width:min(92vw,400px);border-radius:10px;text-align:center;animation:up .45s cubic-bezier(.2,.8,.2,1)}
