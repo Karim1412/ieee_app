@@ -81,6 +81,31 @@ function International() {
       <Img src={p} alt={`R8 SYP Kraków photo ${i + 1}`} fallback="Photo" width={240} height={180} /></button>)}</div>
     {open !== null && <Lightbox photos={INTERNATIONAL.photos} index={open} onClose={() => setOpen(null)} />}</section>
 }
+function InstallPopup({ inst, onClose }: { inst: ReturnType<typeof useInstall>; onClose: () => void }) {
+  const ref = useRef<HTMLDialogElement>(null); useEffect(() => { ref.current?.showModal() }, [])
+  return <dialog ref={ref} className="pop" onClose={onClose} aria-labelledby="pop-t">
+    <Img src="/images/branding/epi-sb-logo.png" alt="IEEE EPI SB" fallback="EPI SB" width={72} height={72} loading="eager" />
+    <h3 id="pop-t">Install IEEE EPI SB</h3>
+    <p>Keep the app on your phone for instant access to events, chapters and registration, even offline.</p>
+    <button className="btn" onClick={() => { ref.current?.close(); inst.install() }}>{inst.isIOS ? 'Show me how' : 'Install the app'}</button>
+    <button className="btn ghost" onClick={() => ref.current?.close()}>Not now</button></dialog>
+}
+function Events() {
+  const [lb, setLb] = useState<{ e: EventItem; i: number } | null>(null)
+  return <section id="events" className="events">
+    <Head kicker="Our story" title="Our events" />
+    <p className="lead sub">Five signature events where our community learns, competes and celebrates technology together.</p>
+    <div className="evlist">{EVENTS.map((e, n) => <Reveal key={e.id} className="ev"><article>
+      <button className="cover" disabled={!e.photos.length} onClick={() => setLb({ e, i: 0 })} aria-label={`Open ${e.name} gallery`}>
+        {e.photos[0] ? <Img src={e.photos[0]} alt={e.name} fallback={e.name} width={640} height={400} /> : <div className="ph">Add photos</div>}
+        <span className="idx">{String(n + 1).padStart(2, '0')}</span></button>
+      <div className="evb"><time>{e.date}</time><h3>{e.name}</h3><p>{e.description}</p>
+        {e.photos.length > 0 && <button className="btn ghost light" onClick={() => setLb({ e, i: 0 })}>View gallery · {e.photos.length} photos</button>}
+        {e.photos.length > 1 && <div className="thumbs">{e.photos.slice(1, 5).map((p, i) =>
+          <button key={p} onClick={() => setLb({ e, i: i + 1 })} aria-label={`Open ${e.name} photo ${i + 2}`}><Img src={p} alt="" fallback="" width={72} height={56} /></button>)}</div>}
+      </div></article></Reveal>)}</div>
+    {lb && <Lightbox photos={lb.e.photos} index={lb.i} onClose={() => setLb(null)} />}</section>
+}
 const NAV = [['home','Home'],['about','Explore'],['chapters','Chapters'],['events','Events'],['team','Team'],['register','Join']]
 function ScrollBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -123,8 +148,8 @@ function Contact() {
 }
 
 export default function App() {
-  const inst = useInstall(); const [active, setActive] = useState('home'); const [banner, setBanner] = useState(false)
-  useEffect(() => { const t = setTimeout(() => inst.autoSuggest && setBanner(true), 12000); return () => clearTimeout(t) }, [inst.autoSuggest])
+  const inst = useInstall(); const [active, setActive] = useState('home'); const [popup, setPopup] = useState(false)
+  useEffect(() => { const t = setTimeout(() => inst.autoSuggest && setPopup(true), 1800); return () => clearTimeout(t) }, [inst.autoSuggest])
   useEffect(() => { const o = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && setActive(e.target.id)), { rootMargin: '-45% 0px -50% 0px' })
     NAV.forEach(([id]) => { const el = document.getElementById(id); el && o.observe(el) }); return () => o.disconnect() }, [])
   return <>
@@ -150,8 +175,8 @@ export default function App() {
         <div className="chapters">{CHAPTERS.map(c => <Reveal key={c.id}><article className="chapter">
           <Img src={c.logo} alt={`${c.name} chapter logo`} fallback={c.name} width={72} height={72} />
           <div><h3>{c.name}</h3><small>{c.full}</small><p>{c.description}</p><p className="mission"><b>Mission:</b> {c.mission}</p></div></article></Reveal>)}</div></section>
+      <Events />
       <Upcoming />
-      <section id="events"><Head kicker="04" title="Our events" />{EVENTS.map(e => <Reveal key={e.id}><EventCard e={e} /></Reveal>)}</section>
       <Awards />
       <International />
       <section id="team"><Head kicker="05" title="Meet the officers" />
@@ -164,9 +189,7 @@ export default function App() {
     </main>
     <nav className="bar" aria-label="Main">{NAV.map(([id, l]) =>
       <a key={id} href={`#${id}`} aria-current={active === id ? 'page' : undefined}>{l}</a>)}</nav>
-    {banner && !inst.installed && <div className="banner" role="status"><span>Add IEEE EPI SB to your phone</span>
-      <button className="btn sm" onClick={() => { inst.install(); setBanner(false) }}>Install</button>
-      <button className="x2" aria-label="Dismiss" onClick={() => { inst.dismiss(); setBanner(false) }}>✕</button></div>}
+    {popup && !inst.installed && <InstallPopup inst={inst} onClose={() => { setPopup(false); inst.dismiss() }} />}
     {inst.showIOS && <IOSGuide onClose={inst.closeIOS} />}
   </>
 }

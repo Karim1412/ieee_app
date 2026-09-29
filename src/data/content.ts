@@ -103,13 +103,13 @@ export const AWARDS: Award[] = [
 // Photos: /public/images/upcoming/. TODO: real dates and final descriptions.
 export interface Upcoming { title: string; date: string; description: string; photo: string }
 export const UPCOMING: Upcoming[] = [
-  { title: 'TSYP 14', date: 'TODO: date', photo: '/images/upcoming/tsyp.jpg',
+  { title: 'TSYP 14', date: '14-15-16 December 2026', photo: '/images/upcoming/tsyp.jpg',
     description: 'A national congress for IEEE students and young professionals, with technical and non-technical challenges, talks and workshops, welcoming 1200+ students from across the country.' },
-  { title: 'TRSYP 2.0', date: 'TODO: date', photo: '/images/upcoming/trsyp.jpg',
+  { title: 'TRSYP 2.0', date: '17-18 October 2026', photo: '/images/upcoming/trsyp.jpg',
     description: 'A national student congress bringing together IEEE members for robotic competitions, technical sessions and networking, with challenges for every profile.' },
-  { title: 'WIE ACT 5.0', date: 'TODO: date', photo: '/images/upcoming/wie-act.jpg',
+  { title: 'WIE ACT 5.0', date: '21-22 November 2026', photo: '/images/upcoming/wie-act.jpg',
     description: 'A national gathering led by IEEE Women in Engineering: inspiring speakers, hands-on technical challenges and non-technical activities open to hundreds of students.' },
-  { title: 'CSTAM 3.0', date: 'TODO: date', photo: '/images/upcoming/cstam.jpg',
+  { title: 'CSTAM 3.0', date: '14-15 November 2026', photo: '/images/upcoming/cstam.jpg',
     description: 'The new edition of the CSTAM congress, a national event where student teams compete in computer society fields and connect with the IEEE community.' },
 ]
 

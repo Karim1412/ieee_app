@@ -120,3 +120,21 @@ h1 span:last-child{color:var(--navy)}
 .flag{width:44px;flex:none;border:1px solid var(--line);border-radius:2px}
 .intl time{color:var(--blue);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
 @media(min-width:768px){.rail{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding:0}.award{width:auto}.ugrid{grid-template-columns:1fr 1fr}}
+
+/* ===== v4: events showcase + install popup ===== */
+.events{background:var(--navy);color:#fff;box-shadow:0 0 0 100vmax var(--navy);clip-path:inset(0 -100vmax);padding-block:72px}
+.events .kicker{color:#9fd3f5}.events .head h2::after{background:#9fd3f5}.events .head h2{font-size:clamp(36px,10vw,64px)}
+.events .sub{color:#c9d8e6;margin-bottom:36px}.events .ph{background:#123a5e;color:#9fd3f5}
+.evlist{display:grid;gap:44px}.ev article{display:grid;gap:18px}
+.cover{position:relative;display:block;width:100%;border:0;padding:0;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r);background:#123a5e;cursor:pointer}
+.cover:disabled{cursor:default}.cover img,.cover .ph{width:100%;height:100%;object-fit:cover;transition:transform .6s}.cover:hover img{transform:scale(1.04)}
+.idx{position:absolute;left:0;bottom:0;background:var(--blue);color:#fff;font:700 28px var(--h);padding:8px 16px}
+.evb{display:grid;gap:12px;justify-items:start}.evb time{color:#9fd3f5;font:600 13px var(--b);letter-spacing:.1em;text-transform:uppercase}
+.evb h3{font-size:clamp(36px,11vw,60px);letter-spacing:-.02em}.evb p{color:#c9d8e6;max-width:52ch}
+.btn.ghost.light{color:#fff;border-color:#fff}.btn.ghost.light:hover{background:#fff;color:var(--navy);border-color:#fff}
+.thumbs{display:flex;gap:8px}.thumbs button{width:72px;height:56px;padding:0;border:0;border-radius:4px;overflow:hidden;cursor:pointer;background:#123a5e;opacity:.85;transition:opacity .2s}
+.thumbs button:hover{opacity:1}.thumbs img{width:100%;height:100%;object-fit:cover}
+.pop{margin:auto;width:min(92vw,400px);border-radius:10px;text-align:center;animation:up .45s cubic-bezier(.2,.8,.2,1)}
+.pop[open]{display:grid;gap:12px;justify-items:center}.pop img,.pop .ph{width:72px;height:72px;object-fit:contain}
+.pop h3{font-size:26px;color:var(--blue)}.pop p{color:var(--gray)}.pop .btn{width:100%}
+@media(min-width:768px){.ev article{grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}.ev:nth-child(even) .cover{order:2}}
