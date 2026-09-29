@@ -36,7 +36,7 @@ export interface Chapter { id: string; name: string; full: string; logo: string;
 // Board of each chapter: 5 fixed roles. Photos go in /public/images/chapters/board/<chapter-id>/<role>.jpg
 // To customise one person, replace the generated list by explicit objects: { role: 'Chair', name: 'Full Name', photo: '/images/...' }
 const ROLES: [string, string][] = [['Chair', 'chair'], ['Vice Chair', 'vice-chair'], ['Secretary', 'secretary'], ['Webmaster', 'webmaster'], ['Treasurer', 'treasurer']]
-const board = (id: string): BoardMember[] => ROLES.map(([role, f]) => ({ role, name: 'Full Name', photo: `/images/chapters/board/${id}/${f}.jpg` }))
+const board = (id: string): BoardMember[] => ROLES.map(([role, f]) => ({ role, name: '', photo: `/images/chapters/board/${id}/${f}.jpg` }))
 
 // "color" = the chapter's brand color (hex). TODO: replace each with the exact color of the chapter logo.
 export const CHAPTERS: Chapter[] = [
