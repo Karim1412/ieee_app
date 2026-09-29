@@ -92,7 +92,7 @@ export const OFFICERS: Officer[] = [
 // Photos: /public/images/awards/. Use the real file extension.
 export interface Award { rank: '1st' | '2nd' | '3rd'; title: string; photo: string }
 export const AWARDS: Award[] = [
-  { rank: '1st', title: '1st prize in CSTAM 2.0 technical challenge', photo: '/images/awards/cstam.jpg' },
+  { rank: '1st', title: '1st prize in CSTAM 2.0 technical challenge', photo: '/images/awards/cstam1.jpg' },
   { rank: '1st', title: '1st prize in Sumo Squid Robots 6.0', photo: '/images/awards/sumo.jpg' },
   { rank: '2nd', title: '2nd prize All Terrain Squid Robots 6.0', photo: '/images/awards/all-terrain-squid-6.jpg' },
   { rank: '2nd', title: '2nd prize All Terrain in Green Robot Challenge ITBS', photo: '/images/awards/itbs.jpg' },
