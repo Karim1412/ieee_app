@@ -48,7 +48,7 @@ export const CHAPTERS: Chapter[] = [
     description: 'Example: software, algorithms and computing technologies.',
     mission: 'Example: grow coding and problem-solving skills.',
     interests: ['Software engineering', 'Algorithms and competitive programming', 'Web and mobile development', 'Cybersecurity', 'Cloud computing'], board: board('cs') },
-  { id: 'cis', name: 'CIS', full: 'Computational Intelligence Society', logo: '/images/chapters/cis.png', color: '#00B5E2',
+  { id: 'cis', name: 'CIS', full: 'Computational Intelligence Society', logo: '/images/chapters/cis.png', color: '#29a0e6',
     description: 'Example: AI, machine learning and data science.',
     mission: 'Example: make AI accessible through hands-on projects.',
     interests: ['Artificial intelligence', 'Machine learning', 'Neural networks', 'Data science', 'Fuzzy systems'], board: board('cis') },
