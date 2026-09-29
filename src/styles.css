@@ -143,3 +143,43 @@ h1 span:last-child{color:var(--navy)}
 .inbox li button.unread::before{content:'';position:absolute;left:0;top:21px;width:9px;height:9px;border-radius:50%;background:var(--blue)}
 .msg{display:grid;gap:12px;padding-top:12px;justify-items:start}.msg img{width:100%;border-radius:var(--r);aspect-ratio:16/9;object-fit:cover}
 .msg time{color:var(--blue);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase}.msg h3{font-size:26px}
+
+/* ===== chapter popup ===== */
+.chapter{cursor:pointer;border-top:3px solid var(--c,var(--line))}.chapter::before{background:var(--c,var(--blue))!important}
+.chapter:focus-visible{outline:3px solid var(--c,var(--blue));outline-offset:2px}
+.more{display:inline-block;margin-top:8px;color:var(--c,var(--blue));font-weight:600;font-size:14px;transition:transform .2s}.chapter:hover .more{transform:translateX(4px)}
+.cm{padding:0;border:0;margin:auto auto 0;width:100%;max-width:100vw;max-height:92dvh;border-radius:16px 16px 0 0;overflow:hidden;background:#fff;color:var(--navy)}
+.cm[open]{display:block;animation:cmUp .5s cubic-bezier(.2,.8,.2,1)}
+.cm::backdrop{background:rgba(10,37,64,.72);animation:fade2 .3s}
+@keyframes cmUp{from{transform:translateY(60px) scale(.98);opacity:0}}@keyframes fade2{from{opacity:0}}
+.cm-in{max-height:92dvh;overflow-y:auto;overscroll-behavior:contain}
+.cm-head{position:relative;overflow:hidden;background:var(--c);color:var(--ink);padding:28px 20px;display:grid;gap:16px;animation:wipe .8s .05s cubic-bezier(.2,.8,.2,1) both}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.cm-wm{position:absolute;right:-10px;bottom:-34px;font:700 clamp(120px,40vw,220px)/1 var(--h);opacity:.13;pointer-events:none;letter-spacing:-.04em}
+.cm-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.22);color:var(--ink);font-size:18px;cursor:pointer;z-index:2;transition:background .2s}
+.cm-x:hover{background:rgba(255,255,255,.4)}
+.cm-logo{position:relative;width:72px;height:72px;background:#fff;border-radius:var(--r);display:grid;place-items:center;padding:8px;animation:rise2 .6s .3s both}
+.cm-logo img{width:100%;height:100%;object-fit:contain}.cm-logo .ph{background:none;font-size:16px}
+.cm-head>div:last-child{position:relative;display:grid;gap:6px;animation:rise2 .6s .35s both}
+.cm-head small{opacity:.88;font:600 12px var(--b);letter-spacing:.08em;text-transform:uppercase}
+.cm-head h2{font-size:clamp(48px,15vw,76px);letter-spacing:-.03em}.cm-head p{max-width:46ch;opacity:.93}
+@keyframes rise2{from{opacity:0;transform:translateY(14px)}}
+.cm-body{padding:24px 20px calc(28px + env(safe-area-inset-bottom,0px));display:grid;gap:32px}
+.cm-body h3{display:flex;align-items:center;gap:12px;margin-bottom:12px;font:700 13px var(--b);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.cm-body h3::after{content:'';flex:1;height:1px;background:var(--line)}
+.cm-int{list-style:none;padding:0;counter-reset:x}
+.cm-int li{counter-increment:x;display:flex;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font:600 18px var(--h);animation:rise2 .5s calc(.5s + var(--i)*.06s) both}
+.cm-int li::before{content:counter(x,decimal-leading-zero);color:var(--c);font:700 13px var(--b);min-width:22px}
+.cm-board{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cm-board figure{margin:0;animation:rise2 .5s calc(.65s + var(--i)*.07s) both}
+.cm-board img,.cm-board .ph{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);border-bottom:4px solid var(--c)}
+.cm-board .ph{background:var(--sky);color:var(--c)}
+.cm-board figcaption{display:grid;padding-top:8px}.cm-board b{font:600 15px var(--h)}.cm-board span{font-size:13px;color:var(--c);font-weight:600}
+@media(min-width:768px){.cm{margin:auto;width:min(92vw,880px);max-height:90dvh;border-radius:12px}.cm-in{max-height:90dvh}
+.cm-head{padding:40px;grid-template-columns:auto 1fr;align-items:end}.cm-logo{width:96px;height:96px}
+.cm-body{padding:32px 40px;grid-template-columns:1fr 1.5fr;align-items:start}.cm-board{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== about logos ===== */
+.aboutlogo{display:flex;align-items:center;width:max-content;max-width:100%;margin-bottom:20px;padding:14px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--r);border-left:4px solid var(--blue);transition:transform .25s,box-shadow .25s}
+.aboutlogo:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,37,64,.08)}
+.aboutlogo img{height:56px;width:auto;max-width:100%;object-fit:contain}.aboutlogo .ph{height:56px;padding:0 16px;min-width:96px}

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { NEXT_EVENT, CHAPTERS, EVENTS, OFFICERS, ABOUT_IEEE, ABOUT_SB, SOCIALS, EventItem, REGISTRATION_URL, CONTACT_EMAIL, AWARDS, UPCOMING, INTERNATIONAL } from './data/content'
+import { NEXT_EVENT, CHAPTERS, EVENTS, OFFICERS, ABOUT_IEEE, ABOUT_SB, SOCIALS, EventItem, Chapter, REGISTRATION_URL, CONTACT_EMAIL, AWARDS, UPCOMING, INTERNATIONAL } from './data/content'
 import { useCountdown } from './hooks/useCountdown'
 import { useInstall } from './hooks/useInstall'
 import { enablePush } from './push'
 import Inbox from './Inbox'
+import ChapterModal from './ChapterModal'
 
 function Img({ src, alt, fallback, ...p }: { src: string; alt: string; fallback: string } & React.ImgHTMLAttributes<HTMLImageElement>) {
   const [bad, setBad] = useState(false)
@@ -110,6 +111,18 @@ function NotifyPopup({ onClose }: { onClose: () => void }) {
     <button className="btn" onClick={() => { ref.current?.close(); enablePush() }}>Enable notifications</button>
     <button className="btn ghost" onClick={() => ref.current?.close()}>Not now</button></dialog>
 }
+function Chapters() {
+  const [sel, setSel] = useState<Chapter | null>(null)
+  return <section id="chapters"><Head kicker="03" title="Our 5 chapters" />
+    <div className="chapters">{CHAPTERS.map(c => <Reveal key={c.id}>
+      <article className="chapter" style={{ ['--c' as string]: c.color } as React.CSSProperties} role="button" tabIndex={0} aria-haspopup="dialog"
+        aria-label={`${c.name}: open board and fields of interest`} onClick={() => setSel(c)}
+        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSel(c) } }}>
+        <Img src={c.logo} alt={`${c.name} chapter logo`} fallback={c.name} width={72} height={72} />
+        <div><h3>{c.name}</h3><small>{c.full}</small><p>{c.description}</p><p className="mission"><b>Mission:</b> {c.mission}</p>
+          <span className="more">Board and interests →</span></div></article></Reveal>)}</div>
+    {sel && <ChapterModal c={sel} onClose={() => setSel(null)} />}</section>
+}
 const NAV = [['home','Home'],['about','Explore'],['chapters','Chapters'],['events','Events'],['team','Team'],['register','Join']]
 function ScrollBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -178,13 +191,10 @@ export default function App() {
       </section>
       <Marquee />
       <Register />
-      <section id="about"><Reveal><Head kicker="01" title={ABOUT_IEEE.title} /><p className="lead">{ABOUT_IEEE.text}</p>
+      <section id="about"><Reveal><div className="aboutlogo"><Img src="/images/branding/ieee-logo.png" alt="IEEE logo" fallback="IEEE" width={160} height={56} /></div><Head kicker="01" title={ABOUT_IEEE.title} /><p className="lead">{ABOUT_IEEE.text}</p>
         <ul className="pts">{ABOUT_IEEE.points.map(p => <li key={p}>{p}</li>)}</ul></Reveal>
-        <Reveal className="alt"><Head kicker="02" title={ABOUT_SB.title} /><p className="lead">{ABOUT_SB.text}</p></Reveal></section>
-      <section id="chapters"><Head kicker="03" title="Our 5 chapters" />
-        <div className="chapters">{CHAPTERS.map(c => <Reveal key={c.id}><article className="chapter">
-          <Img src={c.logo} alt={`${c.name} chapter logo`} fallback={c.name} width={72} height={72} />
-          <div><h3>{c.name}</h3><small>{c.full}</small><p>{c.description}</p><p className="mission"><b>Mission:</b> {c.mission}</p></div></article></Reveal>)}</div></section>
+        <Reveal className="alt"><div className="aboutlogo"><Img src="/images/branding/epi-sb-logo.png" alt="IEEE EPI Student Branch logo" fallback="EPI SB" width={160} height={56} /></div><Head kicker="02" title={ABOUT_SB.title} /><p className="lead">{ABOUT_SB.text}</p></Reveal></section>
+      <Chapters />
       <Upcoming />
       <section id="events"><Head kicker="04" title="Our events" />{EVENTS.map(e => <Reveal key={e.id}><EventCard e={e} /></Reveal>)}</section>
       <Awards />

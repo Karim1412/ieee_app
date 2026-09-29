@@ -30,29 +30,38 @@ export const ABOUT_SB = {
 }
 
 // ---------- CHAPTERS ----------
-export interface Chapter { id: string; name: string; full: string; logo: string; description: string; mission: string }
+export interface BoardMember { role: string; name: string; photo: string }
+export interface Chapter { id: string; name: string; full: string; logo: string; description: string; mission: string
+  color: string; interests: string[]; board: BoardMember[] }
+// Board of each chapter: 5 fixed roles. Photos go in /public/images/chapters/board/<chapter-id>/<role>.jpg
+// To customise one person, replace the generated list by explicit objects: { role: 'Chair', name: 'Full Name', photo: '/images/...' }
+const ROLES: [string, string][] = [['Chair', 'chair'], ['Vice Chair', 'vice-chair'], ['Secretary', 'secretary'], ['Webmaster', 'webmaster'], ['Treasurer', 'treasurer']]
+const board = (id: string): BoardMember[] => ROLES.map(([role, f]) => ({ role, name: 'Full Name', photo: `/images/chapters/board/${id}/${f}.jpg` }))
+
+// "color" = the chapter's brand color (hex). TODO: replace each with the exact color of the chapter logo.
 export const CHAPTERS: Chapter[] = [
-  { id: 'ras', name: 'RAS', full: 'Robotics and Automation Society',
-    logo: '/images/chapters/ras.png',
-    description: 'explores robots, automation and embedded systems.',
-    mission: 'help students build and program real robotic systems.' },
-  { id: 'cs', name: 'CS', full: 'Computer Society',
-    logo: '/images/chapters/cs.png',
-    description: 'software, algorithms and computing technologies.',
-    mission: 'grow coding and problem-solving skills.' },
-  { id: 'cis', name: 'CIS', full: 'Computational Intelligence Society',
-    logo: '/images/chapters/cis.png',
-    description: 'AI, machine learning and data science.',
-    mission: 'make AI accessible through hands-on projects.' },
-  { id: 'ias', name: 'IAS', full: 'Industry Applications Society',
-    logo: '/images/chapters/ias.png',
-    description: 'industrial technology, energy and applied engineering.',
-    mission: 'connect students with real industry practice.' },
-  { id: 'wie', name: 'WIE', full: 'Women in Engineering',
-    logo: '/images/chapters/wie.png',
-    description: 'supports and inspires women in engineering and technology.',
-    mission: 'build an inclusive community of future engineers.' },
+  { id: 'ras', name: 'RAS', full: 'Robotics and Automation Society', logo: '/images/chapters/ras.png', color: '#862633',
+    description: 'Example: explores robots, automation and embedded systems.',
+    mission: 'Example: help students build and program real robotic systems.',
+    interests: ['Robotics', 'Automation and control', 'Embedded systems', 'Sensors and mechatronics', 'Autonomous vehicles'], board: board('ras') },
+  { id: 'cs', name: 'CS', full: 'Computer Society', logo: '/images/chapters/cs.png', color: '#FFA300',
+    description: 'Example: software, algorithms and computing technologies.',
+    mission: 'Example: grow coding and problem-solving skills.',
+    interests: ['Software engineering', 'Algorithms and competitive programming', 'Web and mobile development', 'Cybersecurity', 'Cloud computing'], board: board('cs') },
+  { id: 'cis', name: 'CIS', full: 'Computational Intelligence Society', logo: '/images/chapters/cis.png', color: '#00B5E2',
+    description: 'Example: AI, machine learning and data science.',
+    mission: 'Example: make AI accessible through hands-on projects.',
+    interests: ['Artificial intelligence', 'Machine learning', 'Neural networks', 'Data science', 'Fuzzy systems'], board: board('cis') },
+  { id: 'ias', name: 'IAS', full: 'Industry Applications Society', logo: '/images/chapters/ias.png', color: '#00843D',
+    description: 'Example: industrial technology, energy and applied engineering.',
+    mission: 'Example: connect students with real industry practice.',
+    interests: ['Industrial automation', 'Electrical drives and power systems', 'Renewable energy', 'Industrial IoT', 'Industry 4.0'], board: board('ias') },
+  { id: 'wie', name: 'WIE', full: 'Women in Engineering', logo: '/images/chapters/wie.png', color: '#7B2D8E',
+    description: 'Example: supports and inspires women in engineering and technology.',
+    mission: 'Example: build an inclusive community of future engineers.',
+    interests: ['Leadership', 'Mentoring', 'Women in STEM', 'Career development', 'Technical workshops'], board: board('wie') },
 ]
+
 
 // ---------- EVENTS ----------
 // Each photo must be listed here, files are NOT detected automatically.
