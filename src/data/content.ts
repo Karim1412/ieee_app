@@ -13,9 +13,9 @@ export const NEXT_EVENT = { name: 'IEEE Day', date: new Date(2026, 9, 15, 0, 0, 
 export const REGISTRATION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd4MA0sYbJRtfGLxbXNgcKEBUZd17E7g3vCWciq0Irm22nj1w/viewform?usp=dialog'
 export const CONTACT_EMAIL = 'karimthabet@ieee.org'
 export const SOCIALS = [
-  { label: 'Instagram', url: 'https://instagram.com/YOUR_PAGE' },   // TODO
-  { label: 'Facebook', url: 'https://facebook.com/YOUR_PAGE' },     // TODO
-  { label: 'LinkedIn', url: 'https://linkedin.com/company/YOUR_PAGE' }, // TODO
+  { label: 'Instagram', url: 'https://www.instagram.com/ieee_epi_sb/' },   // TODO
+  { label: 'Facebook', url: 'https://www.facebook.com/IEEE.EPI/' },     // TODO
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/company/ieee-epi-student-branch' }, // TODO
 ]
 
 // ---------- ABOUT ----------
