@@ -132,7 +132,7 @@ export const INTERNATIONAL = {
   title: 'R8 SYP Congress · Kraków, Poland 🇵🇱',
   date: 'July 2026',
   description: 'In July 2026, our Chair and Vice Chair earned fully funded grants to attend the IEEE Region 8 Student and Young Professionals (R8 SYP) Congress in Kraków, Poland. They represented IEEE EPI SB and Tunisia, shared our branch’s experience with IEEE volunteers from across the region, and came back with new ideas, connections and practices to strengthen our chapters and events.',
-  photos: ['/images/international/1.jpg', '/images/international/2.jpg', '/images/international/3.jpg'],
+  photos: ['/images/international/1.jpg', '/images/international/2.jpg', '/images/international/3.jpg', '/images/international/4.jpg', '/images/international/5.jpg', '/images/international/6.jpg', '/images/international/7.jpg', '/images/international/8.jpg'],
 }
 
 
